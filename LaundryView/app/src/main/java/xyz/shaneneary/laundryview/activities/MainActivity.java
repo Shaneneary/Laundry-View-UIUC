@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -26,19 +24,14 @@ import xyz.shaneneary.laundryview.objects.DormMachines;
 
 public class MainActivity extends AppCompatActivity {
 
-	Button btnGetData;
-	final String URL = "https://www.laundryalert.com/cgi-bin/urba7723/LMPage?Login=True";
+	private Button btnGetData;
+	private final String URL = "https://www.laundryalert.com/cgi-bin/urba7723/LMPage?Login=True";
 
-//	ArrayList<String> dorms;
-	List<DormMachines> dorms;
-//	ArrayAdapter<DormMachines> dormsAdapter;
-	BaseAdapterDorm dormsAdapter;
-	ListView dormsList;
+	private List<DormMachines> dorms;
+	private BaseAdapterDorm dormsAdapter;
+	private ListView dormsList;
 
-//	Elements tableNewData = new Elements();
-
-
-	ProgressDialog mProgressDialog;
+	private ProgressDialog mProgressDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
 		dormsList = (ListView) findViewById(R.id.myListView);
 		dormsAdapter = new BaseAdapterDorm(dorms, this);
-
-
-//		dormsList = (ListView) findViewById(R.id.myListView);
-//		dorms = new ArrayList<String>();
-//		dormsAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, dorms);
 
 		dormsList.setAdapter(dormsAdapter);
 
@@ -145,67 +133,6 @@ public class MainActivity extends AppCompatActivity {
 
 								break;
 						}
-//						switch (index) {
-//							case 0:
-//
-//								break;
-//							case 1:
-//								// Dorm Name
-//								dorm.dormName = rowData.text();
-//
-//								break;
-//							case 2:
-//								// Washers Free
-//								dorm.washersFree = rowData.text();
-//								break;
-//							case 3:
-//								// Dryers Free
-//								dorm.dryersFree = rowData.text();
-//								break;
-//							case 4:
-//
-//								break;
-//							case 5:
-//								// Washers in Use
-//								dorm.washersInUse = rowData.text();
-//								break;
-//							case 6:
-//
-//								break;
-//							case 7:
-//								// Dryers In Use
-//								dorm.dryersInUse = rowData.text();
-//								break;
-//							case 8:
-//
-//								break;
-//							case 9:
-//
-//								break;
-//						}
-//						switch (index) {
-//							case 0:
-//								dorm.dormName = rowData.text();
-//								break;
-//							case 1:
-//								dorm.washersFree = Integer.parseInt(rowData.text());
-//								break;
-//							case 2:
-//								dorm.dryersFree = Integer.parseInt(rowData.text());
-//								break;
-//							case 3:
-//								// Whitespace
-//								break;
-//							case 4:
-//								dorm.washersInUse = Integer.parseInt(rowData.text());
-//								break;
-//							case 6:
-//								dorm.dryersInUse = Integer.parseInt(rowData.text());
-//								break;
-//							case 7:
-//								// Whitespace
-//								break;
-//						}
 						index++;
 					}
 					dorms.add(dorm);
@@ -218,15 +145,6 @@ public class MainActivity extends AppCompatActivity {
 
 		@Override
 		protected void onPostExecute(Void result) {
-//			if( ! tableNewData.isEmpty() ) {
-//				dorms.clear();
-//				for (Element row : tableNewData) {
-////					if( row.text().equals("") == false) {
-//						dorms.add(row.text());
-////					}
-//				}
-//				tableNewData.clear();
-//			}
 			dormsAdapter.notifyDataSetChanged();
 			mProgressDialog.dismiss();
 		}

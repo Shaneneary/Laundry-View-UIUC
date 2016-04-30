@@ -4,44 +4,67 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:weightSum="9"
-    android:padding="8sp">
+    android:padding="8sp"
+    android:minHeight="@dimen/list_item_height">
+
 
     <TextView
         android:id="@+id/list_item_dorm_item_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0sp"
         android:layout_height="match_parent"
         android:layout_weight="5"
         android:text="Dorm"
+        android:gravity="center_horizontal"
         android:textSize="@dimen/dorm_font_size" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"/>
 
     <TextView
         android:id="@+id/list_item_washers_avail"
-        android:layout_width="wrap_content"
+        android:layout_width="0sp"
+        android:gravity="center_horizontal"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="0"
         android:textSize="@dimen/machine_font_size" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"/>
 
     <TextView
         android:id="@+id/list_item_dryers_avail"
-        android:layout_width="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_width="0sp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="0"
         android:textSize="@dimen/machine_font_size" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"/>
 
     <TextView
         android:id="@+id/list_item_washer_occupied"
-        android:layout_width="wrap_content"
+        android:layout_width="0sp"
         android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:layout_weight="1"
         android:text="0"
         android:textSize="@dimen/machine_font_size" />
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"/>
 
     <TextView
         android:id="@+id/list_item_dryers_occupied"
-        android:layout_width="wrap_content"
+        android:layout_width="0sp"
         android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:layout_weight="1"
         android:text="0"
         android:textSize="@dimen/machine_font_size" />

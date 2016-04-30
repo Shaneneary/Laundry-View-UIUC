@@ -12,9 +12,6 @@ import xyz.shaneneary.laundryview.objects.DormMachines;
 
 import java.util.List;
 
-/**
- * Created by TheTrueSaiyan on 3/14/2016.
- */
 public class BaseAdapterDorm extends BaseAdapter {
 
     private List<DormMachines> list;
@@ -46,7 +43,6 @@ public class BaseAdapterDorm extends BaseAdapter {
 
         if(view == null) {
             view = layoutInflater.inflate(R.layout.listview_dorm_item, parent, false);
-
 
             dormViewHolder = new DormViewHolder();
 

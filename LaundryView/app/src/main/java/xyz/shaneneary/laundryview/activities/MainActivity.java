@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -38,12 +39,12 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		// Set click listener for button
 		btnGetData = (Button) findViewById(R.id.btnContent);
 		btnGetData.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				new GetContent().execute();
-
 
 			}
 		});
@@ -68,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
 		});
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main_menu, menu);
+		return true;
+	}
+
 	private class GetContent extends AsyncTask<Void, Void, Void> {
 
 		@Override
@@ -82,6 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
 		@Override
 		protected Void doInBackground(Void... params) {
+			dorms.clear();
+
 			try {
 				Document doc = Jsoup.connect(URL).get();
 				Element table = doc.getElementById("tableb");
@@ -91,18 +101,15 @@ public class MainActivity extends AppCompatActivity {
 				rows.remove(0);
 				rows.remove(0);
 				rows.remove(30);
+
 				for(Element row : rows) {
 					int index = 0;
 					DormMachines dorm = new DormMachines();
 					for (Element rowData : row.getElementsByTag("td")) {
 						switch (index) {
-							case 0:
-
-								break;
 							case 1:
 								// Dorm Name
 								dorm.dormName = rowData.text();
-
 								break;
 							case 2:
 								// Washers Free
@@ -112,26 +119,17 @@ public class MainActivity extends AppCompatActivity {
 								// Dryers Free
 								dorm.dryersFree = Integer.parseInt(rowData.text());
 								break;
-							case 4:
-
-								break;
 							case 5:
 								// Washers in Use
 								dorm.washersInUse = Integer.parseInt(rowData.text());
-								break;
-							case 6:
-
 								break;
 							case 7:
 								// Dryers In Use
 								dorm.dryersInUse = Integer.parseInt(rowData.text());
 								break;
-							case 8:
-
+							default:
 								break;
-							case 9:
 
-								break;
 						}
 						index++;
 					}
